@@ -1,0 +1,278 @@
+Estrutura do Site - Biig Consultoria
+Gestão Estratégica de Empreendimentos Imobiliários
+1. ARQUITETURA DO SITE
+Páginas Principais
+1. Home
+2. Serviços
+3. Sobre Nós
+4. Cases/Clientes (logos)
+5. Contato
+
+2. ESTRUTURA DA HOME
+Hero Section (Topo da página)
+Headline Principal: > Gestão estratégica de empreendimentos imobiliários
+Subheadline: > Conectamos capital, viabilidade e execução para transformar projetos em
+negócios sólidos.
+CTA (Call-to-Action): - “Estruture seu projeto” (botão principal) - “Conheça nossos
+serviços” (botão secundário)
+
+Seção: Nossos Pilares de Atuação
+3 Cards principais:
+1. Estruturação Financeira
+Decisões seguras começam com números bem construídos. - Ícone sugerido:
+Gráfico/Calculadora - Link para: Serviços → Modelagem Financeira
+2. Captação de Capital
+O capital certo, na estrutura certa, no momento certo. - Ícone sugerido: Handshake/Conexão
+- Link para: Serviços → Captação de Recursos
+3. Operações com a Caixa
+Especialistas em transformar projetos em contratos aprovados - Ícone sugerido: Documento
+com check/Selo - Link para: Serviços → Operações CEF
+
+Seção: Quem Confia na Biig
+•
+Grid de logos dos clientes
+•
+Sem depoimentos (apenas logos por enquanto)
+•
+Título: “Projetos que já estruturamos” ou “Quem confia na Biig”
+Seção: Sobre a Biig (resumo)
+•
+Breve apresentação dos dois sócios (fotos + mini bio)
+•
+Link para página “Sobre Nós” completa
+•
+Destaque: “Nascida no Norte, atuação nacional”
+Seção: CTA Final
+•
+Frase de impacto
+•
+Botão “Vamos conversar sobre seu projeto”
+•
+Link para WhatsApp/Formulário de contato
+
+3. PÁGINA DE SERVIÇOS
+Estrutura dos Serviços (organizados por jornada do cliente)
+SERVIÇO 1: Estruturação Financeira & Viabilidade
+Tipo: Produto de entrada
+O que é: Modelagem financeira imobiliária e estudos de viabilidade que sustentam
+decisões seguras de investimento.
+Para quem: Terrenistas, incorporadores e investidores antes do lançamento ou aquisição.
+O que inclui: - Estudos de viabilidade econômico-financeira - Modelagem de fluxo de caixa
+do empreendimento - Análise de sensibilidade e cenários - Indicadores de performance
+(TIR, VPL, payback, margem, etc.) - Suporte à tomada de decisão para lançamento,
+aquisição de terrenos ou reestruturação de projetos
+Entrega-chave: Modelo financeiro, cenários e diagnóstico de viabilidade.
+
+SERVIÇO 2: Captação e Estruturação de Capital
+Tipo: Produto de valor
+O que é: Estruturação da melhor combinação entre dívida e equity para viabilizar o
+empreendimento.
+
+Para quem: Projetos aprovados ou em fase final de estruturação.
+O que inclui: - Estruturação de operações com instituições financeiras (CEF e outros
+agentes) - Estruturação de operações de equity, dívida ou modelos mistos - Apoio à
+definição da melhor estrutura de capital do empreendimento - Preparação técnica e
+financeira para apresentação a bancos e investidores
+Entrega-chave: Estrutura de capital, dossiê para bancos/investidores e apoio à
+negociação.
+
+SERVIÇO 3: Operações Estruturadas com a Caixa
+Tipo: Produto de recorrência/execução
+O que é: Atuação técnica especializada na estruturação e condução de operações junto à
+Caixa Econômica Federal.
+Para quem: Empreendimentos que dependem de crédito imobiliário estruturado.
+O que inclui: - Estruturação e acompanhamento de operações de crédito imobiliário Análise e preparação de documentação técnica, jurídica e financeira - Interface com
+engenharia, jurídico e áreas de crédito - Acompanhamento do processo de aprovação e
+contratação
+Entrega-chave: Aprovação, contratação e acompanhamento técnico da operação.
+
+4. PÁGINA SOBRE NÓS
+Estrutura sugerida:
+Nossa História
+•
+Como a Biig começou
+•
+Posicionamento: Nascida no Norte, atuação nacional
+Missão
+Transformar ideias em empreendimentos sólidos, conectando capital, propósito e execução
+por meio de gestão estratégica, inteligência financeira e excelência técnica.
+Visão
+Ser referência nacional em gestão estratégica de incorporações e estruturação de
+investimentos imobiliários, nascida no Norte e expandida para todo o país.
+Valores
+•
+Governança e ética: Base de toda relação de confiança
+•
+Eficiência e previsibilidade: Processos claros, resultados esperados
+
+•
+•
+•
+
+Inteligência financeira aplicada: Números que fazem sentido no mundo real
+Tecnologia como alavanca de escala: Ferramentas modernas para decisões ágeis
+Solidez técnica e responsabilidade de longo prazo: Compromisso além do
+fechamento do negócio
+
+Nossos Sócios
+•
+Foto + Nome + Breve Bio/Currículo de cada sócio
+•
+LinkedIn links (opcional)
+
+5. PÁGINA DE CASES/CLIENTES
+Estrutura simples para começar:
+•
+Grid com logos dos clientes
+•
+Categorização por tipo de projeto (opcional):
+–
+Incorporação residencial
+–
+Empreendimentos comerciais
+–
+Estruturação de fundos
+–
+etc.
+Observação: No futuro, pode evoluir para cases completos com resultados e depoimentos.
+
+6. PÁGINA DE CONTATO
+Elementos essenciais:
+•
+Formulário de contato:
+–
+Nome
+–
+Email
+–
+Telefone
+–
+Empresa (opcional)
+–
+Tipo de projeto/interesse
+–
+Mensagem
+•
+Informações de contato:
+–
+Email comercial
+–
+WhatsApp/Telefone
+–
+Endereço (se aplicável)
+–
+LinkedIn da empresa
+•
+CTA: “Vamos estruturar seu projeto juntos”
+
+7. ELEMENTOS GLOBAIS (em todas as páginas)
+Header/Menu
+•
+Logo Biig
+•
+Links: Home | Serviços | Sobre | Clientes | Contato
+•
+Botão CTA: “Fale conosco”
+Footer
+•
+Links rápidos (mapa do site)
+•
+Redes sociais (LinkedIn principalmente)
+•
+Informações legais (CNPJ, etc.)
+•
+Copyright
+
+8. DIFERENCIAIS A DESTACAR
+Pontos fortes da Biig para enfatizar no site:
+1. Origem Norte, atuação nacional - Diferencial regional
+2. Especialização em CEF - Nicho específico
+3. Visão 360° - Capital + Viabilidade + Execução
+4. Governança e ética - Valores sólidos
+5. Inteligência financeira aplicada - Não é só teoria
+
+9. TOM DE VOZ E LINGUAGEM
+Características da comunicação:
+•
+Profissional, mas acessível
+•
+Técnico sem ser hermético
+•
+Confiante sem ser arrogante
+•
+Direto e objetivo
+•
+Focado em resultados práticos
+Palavras-chave a usar:
+•
+Estruturação, viabilidade, capital, governança
+•
+Estratégico, sólido, eficiente, previsível
+•
+Conectar, transformar, viabilizar
+•
+Inteligência financeira, execução, resultados
+
+10. PRÓXIMOS PASSOS
+Informações que faltam receber:
+•
+☐ Currículos completos dos sócios
+
+•
+•
+•
+•
+•
+•
+
+☐ Fotos profissionais dos sócios
+☐ Logos dos clientes (formato vetorial de preferência)
+☐ Revisão final dos textos
+☐ Mapa completo de serviços (se houver mais detalhes)
+☐ Definição de paleta de cores
+☐ Definição de identidade visual (se já existir)
+
+Sugestões para pensar:
+•
+WhatsApp Business para primeiro contato?
+•
+Blog/Conteúdo educativo no futuro?
+•
+Newsletter sobre mercado imobiliário?
+•
+Calculadoras/ferramentas interativas no site?
+
+11. OBSERVAÇÕES IMPORTANTES
+Estratégia de conversão:
+O site deve conduzir o visitante por uma jornada clara: 1. Descoberta (Home) → Entender
+o que a Biig faz 2. Consideração (Serviços) → Ver como a Biig pode ajudar 3. Decisão
+(Sobre/Cases) → Confiar na Biig 4. Ação (Contato) → Falar com a Biig
+Credibilidade:
+•
+Logos de clientes = prova social imediata
+•
+Currículos dos sócios = expertise técnica
+•
+Valores claros = posicionamento ético
+•
+Especialização CEF = diferencial competitivo
+
+12. SUGESTÃO DE WIREFRAME SIMPLIFICADO
+HOME:
+[HEADER: Logo | Menu | Botão CTA]
+[HERO: Headline + Subheadline + CTAs]
+[3 PILARES: Cards com ícones e textos]
+[CLIENTES: Grid de logos]
+[SÓCIOS: Fotos + Mini bio]
+[CTA FINAL: Frase + Botão]
+[FOOTER: Links + Contato + Redes]
+
+SOBRE O DESIGNER:
+Visual Estilo c6 bank https://www.c6bank.com.br/
+Visual corporativo, sério.
+Stack: PHP/Laravel - Vue
+
+
+Data: Dezembro 2025 Status: Estrutura inicial para desenvolvimento
+
+
