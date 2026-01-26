@@ -1,7 +1,21 @@
-<template>
-    <div class="relative h-screen w-full">
+                                                                                                                                                                                                                                        <template>
+    <div class="relative min-h-screen h-screen w-full bg-[#0a0a0a]">
+        <!-- Vídeo de fundo -->
+        <video
+            ref="backgroundVideo"
+            class="absolute inset-0 w-full h-full object-cover z-0"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            :src="videoSrc"
+            style="min-width: 100%; min-height: 100%; width: 100%; height: 100%;"
+        ></video>
+        <div class="absolute inset-0 bg-[#0a0a0a]/40 pointer-events-none z-5"></div>
+        
         <!-- Carousel Items -->
-        <div class="relative h-full">
+        <div class="relative h-full z-10">
             <div
                 v-for="(slide, index) in slides"
                 :key="index"
@@ -10,37 +24,42 @@
                     currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
                 ]"
             >
-                <div class="absolute inset-0 flex flex-col md:flex-row">
-                    <div
-                        class="relative h-1/2 md:h-full md:w-1/2 w-full bg-cover bg-center"
-                        :style="{ backgroundImage: `url(${slide.image})` }"
-                    >
-                        <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+                <!-- Conteúdo sobreposto -->
+                <div class="absolute inset-0 flex flex-col md:flex-row z-10">
+                    <!-- Texto com efeito de digitação à esquerda -->
+                    <div class="relative h-1/2 md:h-full md:w-1/2 w-full flex items-center justify-center">
+                        <div class="text-white text-center px-4 md:px-8">
+                            <h1 class="leading-tight">
+                                <span class="typewriter-text-big">{{ displayedTextBig }}</span>
+                                <span class="typewriter-text-small">{{ displayedTextSmall }}</span>
+                            </h1>
+                        </div>
                     </div>
-                    <div class="h-1/2 md:h-full md:w-1/2 w-full bg-[#0b0b0b] text-white flex items-start py-12 md:py-16">
-                        <div class="px-6 md:px-12 lg:px-16 py-0 max-w-xl w-full">
-                            <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 leading-[1.1] mt-10">
+                    <!-- Conteúdo à direita -->
+                    <div class="h-1/2 md:h-full md:w-1/2 w-full text-white flex items-start py-8 md:py-12 lg:py-16">
+                        <div class="px-4 md:px-6 lg:px-12 xl:px-16 py-0 max-w-xl w-full">
+                            <h2 class="text-2xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight mb-3 md:mb-4 leading-[1.1] mt-8 md:mt-48 lg:mt-56 hero-title-shadow">
                                 {{ slide.title }}
                             </h2>
-                            <p class="text-base md:text-lg leading-relaxed text-silver-200 font-medium">
+                            <p class="text-sm md:text-base lg:text-lg leading-relaxed text-white font-medium hero-text-shadow-strong mb-4 md:mb-0">
                                 {{ slide.description }}
                             </p>
-                            <div class="mt-6 flex flex-col gap-2">
+                            <div class="mt-4 md:mt-6 flex flex-col gap-2">
                                 <router-link
                                     to="/contato"
-                                    class="hover-lift px-6 py-3 text-sm md:text-base uppercase tracking-wide bg-white text-black font-semibold hover:bg-white/90 transition-all rounded-full"
+                                    class="hover-lift px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm lg:text-base uppercase tracking-wide bg-white text-black font-semibold hover:bg-white/90 transition-all rounded-full hero-button-shadow text-center"
                                 >
                                     Falar com a BIIG
                                 </router-link>
                                 <router-link
                                     to="/contato"
-                                    class="hover-lift px-6 py-3 text-sm md:text-base uppercase tracking-wide border border-white text-white font-semibold hover:bg-white hover:text-black transition-all rounded-full"
+                                    class="hover-lift px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm lg:text-base uppercase tracking-wide border border-white text-white font-semibold hover:bg-white hover:text-black transition-all rounded-full hero-button-shadow text-center"
                                 >
                                     Quero solução financeira pra minha obra
                                 </router-link>
                                 <router-link
                                     to="/contato"
-                                    class="hover-lift px-6 py-3 text-sm md:text-base uppercase tracking-wide border border-white text-white font-semibold hover:bg-white hover:text-black transition-all rounded-full"
+                                    class="hover-lift px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm lg:text-base uppercase tracking-wide border border-white text-white font-semibold hover:bg-white hover:text-black transition-all rounded-full hero-button-shadow text-center"
                                 >
                                     Quero estruturar meu projeto
                                 </router-link>
@@ -49,19 +68,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
-            <svg
-                class="block w-full h-10 md:h-16 -mb-px"
-                viewBox="0 0 1440 80"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-            >
-                <path
-                    d="M0,30 C240,70 480,70 720,50 C960,30 1200,10 1440,30 L1440,80 L0,80 Z"
-                    fill="#1f1f1f"
-                />
-            </svg>
         </div>
 
     </div>
@@ -73,21 +79,44 @@ export default {
     data() {
         return {
             currentSlide: 0,
-            slides: [
+            autoplayInterval: null,
+            fullTextBig: 'BIIG',
+            fullTextSmall: 'Brasil\nInteligência\nImobiliária\nGestão.',
+            displayedTextBig: '',
+            displayedTextSmall: '',
+            typewriterIndex: 0,
+            typewriterInterval: null,
+            isTypingBig: true,
+            videoSrc: '/img/biig.mp4'
+        }
+    },
+    computed: {
+        slides() {
+            return [
                 {
                     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920',
                     title: 'Gestão estratégica de empreendimentos imobiliários',
                     description: 'Conectamos capital, viabilidade e execução para transformar projetos imobiliários em negócios sólidos.'
                 }
-            ],
-            autoplayInterval: null
+            ];
         }
     },
     mounted() {
         this.startAutoplay();
+        this.startTypewriter();
+        this.$nextTick(() => {
+            const video = this.$refs.backgroundVideo;
+            if (video) {
+                video.play().catch(() => {});
+            }
+        });
+        // Listen for locale changes
+        window.addEventListener('locale-changed', this.handleLocaleChange);
     },
     beforeUnmount() {
         this.stopAutoplay();
+        this.stopTypewriter();
+        window.removeEventListener('locale-changed', this.handleLocaleChange);
     },
     methods: {
         nextSlide() {
@@ -111,6 +140,45 @@ export default {
         restartAutoplay() {
             this.stopAutoplay();
             this.startAutoplay();
+        },
+        handleLocaleChange() {
+            this.$forceUpdate();
+        },
+        startTypewriter() {
+            this.displayedTextBig = '';
+            this.displayedTextSmall = '';
+            this.typewriterIndex = 0;
+            this.isTypingBig = true;
+            this.typewriterInterval = setInterval(() => {
+                if (this.isTypingBig) {
+                    if (this.typewriterIndex < this.fullTextBig.length) {
+                        this.displayedTextBig += this.fullTextBig[this.typewriterIndex];
+                        this.typewriterIndex++;
+                    } else {
+                        this.isTypingBig = false;
+                        this.typewriterIndex = 0;
+                    }
+                } else {
+                    if (this.typewriterIndex < this.fullTextSmall.length) {
+                        this.displayedTextSmall += this.fullTextSmall[this.typewriterIndex];
+                        this.typewriterIndex++;
+                    } else {
+                        // Aguarda 2 segundos antes de reiniciar
+                        setTimeout(() => {
+                            this.displayedTextBig = '';
+                            this.displayedTextSmall = '';
+                            this.typewriterIndex = 0;
+                            this.isTypingBig = true;
+                        }, 2000);
+                    }
+                }
+            }, 100); // Velocidade de digitação (100ms por caractere)
+        },
+        stopTypewriter() {
+            if (this.typewriterInterval) {
+                clearInterval(this.typewriterInterval);
+                this.typewriterInterval = null;
+            }
         }
     }
 }
@@ -120,6 +188,107 @@ export default {
 .carousel-item {
     height: 100vh;
     min-height: 300px;
+}
+
+.typewriter-text-big {
+    white-space: pre-line;
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 4px 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 640px) {
+    .typewriter-text-big {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .typewriter-text-big {
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .typewriter-text-big {
+        font-size: 6rem;
+    }
+}
+
+.typewriter-text-small {
+    white-space: pre-line;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 0.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 4px 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 640px) {
+    .typewriter-text-small {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .typewriter-text-small {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .typewriter-text-small {
+        font-size: 2rem;
+    }
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    font-size: 4rem;
+}
+
+@media (min-width: 768px) {
+    .typewriter-cursor {
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .typewriter-cursor {
+        font-size: 6rem;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.hero-title-shadow {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 4px 4px 16px rgba(0, 0, 0, 0.6), 6px 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero-text-shadow {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 3px 3px 12px rgba(0, 0, 0, 0.6);
+}
+
+.hero-text-shadow-strong {
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9), 5px 5px 20px rgba(0, 0, 0, 0.8), 7px 7px 30px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+}
+
+.hero-button-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 </style>
 

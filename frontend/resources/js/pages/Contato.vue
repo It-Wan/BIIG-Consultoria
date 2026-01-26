@@ -3,11 +3,11 @@
         <!-- Hero Section -->
         <section class="bg-[#0b0b0b] section-padding">
             <div class="container-custom">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                <div class="max-w-4xl mx-auto text-center px-4">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
                         Vamos estruturar seu projeto juntos
                     </h1>
-                    <p class="text-xl text-silver-200 leading-relaxed">
+                    <p class="text-base md:text-lg lg:text-xl text-silver-200 leading-relaxed">
                         Entre em contato e descubra como podemos transformar sua ideia em um negócio sólido.
                     </p>
                 </div>
@@ -17,16 +17,16 @@
         <!-- Formulário e Informações -->
         <section class="section-padding bg-[#0b0b0b]">
             <div class="container-custom">
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="max-w-6xl mx-auto px-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                         <!-- Formulário -->
                         <div>
-                            <h2 class="text-2xl font-bold text-white mb-6">
+                            <h2 class="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
                                 Envie sua mensagem
                             </h2>
                             <div class="relative">
-                                <div class="form-glow absolute -inset-8 rounded-full pointer-events-none"></div>
-                                <form @submit.prevent="enviarMensagem" class="relative z-10 space-y-6">
+                                <div class="form-glow absolute -inset-4 md:-inset-8 rounded-full pointer-events-none"></div>
+                                <form @submit.prevent="enviarMensagem" class="relative z-10 space-y-4 md:space-y-6">
                                 <div>
                                     <label for="nome" class="block text-sm font-medium text-silver-200 mb-2">
                                         Nome <span class="text-red-500">*</span>
@@ -124,7 +124,7 @@
                                 <button
                                     type="submit"
                                     :disabled="enviando"
-                                    class="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    class="w-full btn-primary text-sm md:text-base lg:text-lg py-3 md:py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <span v-if="!enviando">Enviar mensagem</span>
                                     <span v-else>Enviando...</span>
@@ -135,10 +135,10 @@
 
                         <!-- Informações de Contato -->
                         <div>
-                            <h2 class="text-2xl font-bold text-white mb-6">
+                            <h2 class="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
                                 Informações de contato
                             </h2>
-                            <div class="space-y-6">
+                            <div class="space-y-4 md:space-y-6">
                                 <div class="flex items-start">
                                     <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,9 +182,9 @@
                                 </div>
                             </div>
 
-                            <div class="mt-12 p-6 bg-[#0b0b0b]/40 border border-white/10 rounded-lg">
-                                <h3 class="font-semibold text-white mb-3">Horário de Atendimento</h3>
-                                <p class="text-silver-200">
+                            <div class="mt-8 md:mt-12 p-4 md:p-6 bg-[#0b0b0b]/40 border border-white/10 rounded-lg">
+                                <h3 class="font-semibold text-white mb-2 md:mb-3 text-base md:text-lg">Horário de Atendimento</h3>
+                                <p class="text-silver-200 text-sm md:text-base">
                                     Segunda a Sexta: 8h às 18h<br>
                                     Sábado: 8h às 12h
                                 </p>

@@ -7,7 +7,7 @@
     >
         <nav class="container-custom max-w-none mx-0 px-3">
             <div class="flex items-center h-20 md:h-24">
-                <router-link to="/" class="flex items-center group">
+                <router-link to="/" class="flex items-center group ml-8 md:ml-12">
                     <img
                         src="/img/logo1.png"
                         alt="BIIG Consultoria"
@@ -54,7 +54,7 @@
                             Sobre
                         </router-link>
                     </div>
-                    <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-4 mr-8 md:mr-12">
                         <router-link 
                             to="/login" 
                             :class="[
@@ -118,7 +118,7 @@
                         ]"
                         :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
                     >
-                        Sobre
+                            Sobre
                     </router-link>
                     <router-link 
                         to="/login" 
@@ -146,17 +146,17 @@ export default {
             isScrolled: false
         }
     },
+    computed: {
+        shouldShowWhiteBackground() {
+            return this.isScrolled || this.$route.name !== 'home';
+        }
+    },
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
         this.handleScroll();
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
-    },
-    computed: {
-        shouldShowWhiteBackground() {
-            return this.isScrolled || this.$route.name !== 'home';
-        }
     },
     methods: {
         toggleMobileMenu() {

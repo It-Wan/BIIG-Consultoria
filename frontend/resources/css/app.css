@@ -29,11 +29,11 @@
         color: #eeeeee;
         line-height: 1.625;
         letter-spacing: -0.01em;
-        font-size: 1.0625rem;
+        font-size: 1rem;
     }
 
     li, label, input, textarea, select, button, a {
-        font-size: 1.0625rem;
+        font-size: 1rem;
     }
 }
 
@@ -98,33 +98,62 @@
     }
     
     .section-padding {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
     }
     @media (min-width: 768px) {
         .section-padding {
-            padding-top: 8rem;
-            padding-bottom: 8rem;
+            padding-top: 10rem;
+            padding-bottom: 10rem;
+        }
+    }
+    @media (min-width: 1024px) {
+        .section-padding {
+            padding-top: 12rem;
+            padding-bottom: 12rem;
+        }
+    }
+    
+    .section-padding-compact {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    @media (min-width: 768px) {
+        .section-padding-compact {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+    }
+    @media (min-width: 1024px) {
+        .section-padding-compact {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         }
     }
     
     .container-custom {
-        max-width: 80rem;
+        max-width: 110rem;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
     @media (min-width: 640px) {
         .container-custom {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
         }
     }
     @media (min-width: 1024px) {
         .container-custom {
-            padding-left: 2rem;
-            padding-right: 2rem;
+            padding-left: 4rem;
+            padding-right: 4rem;
+        }
+    }
+    @media (min-width: 1280px) {
+        .container-custom {
+            padding-left: 5rem;
+            padding-right: 5rem;
         }
     }
     
@@ -202,11 +231,36 @@
         border-bottom-color: #dcf8c6;
     }
 
+    .whatsapp-card {
+        font-size: 1.1875rem;
+    }
+
     .whatsapp-section {
         background-image:
-            radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.04), transparent 50%),
-            radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.03), transparent 55%),
-            radial-gradient(circle at 30% 80%, rgba(0, 0, 0, 0.025), transparent 55%);
+            radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03), transparent 50%),
+            radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.02), transparent 55%),
+            radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.015), transparent 55%);
+    }
+
+    .pillars-background {
+        background-image: url('/img/imagem2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+    
+    .pillars-background::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(242, 242, 242, 0.85);
+        z-index: 0;
+    }
+    
+    .pillars-background > * {
+        position: relative;
+        z-index: 1;
     }
 
     .pillars-layout {
@@ -222,11 +276,14 @@
     }
     .pillars-card {
         width: min(20rem, 92vw);
-        background-color: #2a2a2a;
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 0.5rem;
         padding: 2rem;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        box-shadow: 
+            0 4px 6px rgba(0, 0, 0, 0.1),
+            0 10px 20px rgba(0, 0, 0, 0.15),
+            0 20px 40px rgba(0, 0, 0, 0.2);
         position: relative;
         z-index: 1;
     }
@@ -240,11 +297,12 @@
     .pillars-link {
         display: inline-flex;
         align-items: center;
-        color: rgba(255, 255, 255, 0.75);
+        color: #000000;
         transition: color 200ms;
+        font-weight: 500;
     }
     .pillars-link:hover {
-        color: #ffffff;
+        color: #333333;
     }
     @media (min-width: 768px) {
         .pillars-layout {
@@ -267,8 +325,8 @@
             height: var(--orbit-size);
             transform: translate(-50%, -50%);
             border-radius: 9999px;
-            border: 1px solid rgba(109, 117, 73, 0.6);
-            box-shadow: 0 0 30px rgba(109, 117, 73, 0.35);
+            border: 3px solid rgba(212, 175, 55, 1);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 100px rgba(212, 175, 55, 0.6), 0 0 150px rgba(212, 175, 55, 0.4);
             z-index: 0;
         }
         .pillars-card {
@@ -389,5 +447,443 @@
 }
 
 /* stylelint-enable at-rule-no-unknown */
+
+/* Cards modernos para Pilares de Atuação - Baseado no HTML fornecido */
+.section-header-pillars {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-label-pillars {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #48a9a6;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-title-pillars {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.cards-grid-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+    .cards-grid-pillars {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cards-grid-pillars {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 5rem;
+    }
+}
+
+.pillars-card-modern {
+    background: #f2f2f2;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: slideInCard 0.8s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 16px 48px rgba(0, 0, 0, 0.08);
+    transform-style: preserve-3d;
+}
+
+.pillars-card-modern:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.pillars-card-modern:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.pillars-card-modern:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.pillars-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(72, 169, 166, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.pillars-card-modern:hover::before {
+    opacity: 1;
+}
+
+.pillars-card-modern:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) translateZ(20px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18), 0 32px 96px rgba(0, 0, 0, 0.12);
+}
+
+.pillars-card-number {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.75rem;
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.03);
+    line-height: 1;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.pillars-card-modern:hover .pillars-card-number {
+    color: rgba(0, 0, 0, 0.08);
+    transform: scale(1.1);
+}
+
+.pillars-card-content {
+    padding: 3rem 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.pillars-icon-wrapper {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.pillars-icon-bg {
+    position: absolute;
+    inset: 0;
+    border: 2px solid;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.pillars-icon-bg-1 {
+    border-color: #48a9a6;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+}
+
+.pillars-icon-bg-2 {
+    border-color: #d4a574;
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%, 0 30%);
+}
+
+.pillars-icon-bg-3 {
+    border-color: #c1666b;
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+}
+
+.pillars-card-modern:hover .pillars-icon-bg {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.pillars-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pillars-icon svg {
+    width: 2.25rem;
+    height: 2.25rem;
+    stroke-width: 1.5;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.pillars-card-modern:nth-child(1) .pillars-icon svg {
+    stroke: #48a9a6;
+}
+
+.pillars-card-modern:nth-child(2) .pillars-icon svg {
+    stroke: #d4a574;
+}
+
+.pillars-card-modern:nth-child(3) .pillars-icon svg {
+    stroke: #c1666b;
+}
+
+.pillars-card-modern:hover .pillars-icon svg {
+    transform: scale(1.15);
+}
+
+.pillars-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.pillars-card-description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333333;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.pillars-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.pillars-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+.pillars-card-link::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 100%;
+    height: 1px;
+    transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.pillars-link-1::before {
+    background: #48a9a6;
+}
+
+.pillars-link-2::before {
+    background: #d4a574;
+}
+
+.pillars-link-3::before {
+    background: #c1666b;
+}
+
+.pillars-card-link:hover::before {
+    right: 0;
+}
+
+.pillars-link-1:hover {
+    color: #48a9a6;
+}
+
+.pillars-link-2:hover {
+    color: #d4a574;
+}
+
+.pillars-link-3:hover {
+    color: #c1666b;
+}
+
+.pillars-card-link svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.pillars-card-link:hover svg {
+    transform: translateX(6px);
+}
+
+@keyframes slideInCard {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 1024px) {
+    .cards-grid-pillars {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+.pillars-section-bg {
+    background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
+    position: relative;
+}
+
+.pillars-section-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(90deg, rgba(65, 90, 119, 0.03) 0px, transparent 1px, transparent 80px, rgba(65, 90, 119, 0.03) 81px),
+        repeating-linear-gradient(0deg, rgba(65, 90, 119, 0.03) 0px, transparent 1px, transparent 80px, rgba(65, 90, 119, 0.03) 81px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pillars-section-bg::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 30%, rgba(72, 169, 166, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(212, 165, 116, 0.06) 0%, transparent 50%);
+    animation: ambientLight 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pillars-section-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes ambientLight {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-5%, -5%) scale(1.1); }
+}
+
+@media (max-width: 768px) {
+    .section-header-pillars {
+        margin-bottom: 2.5rem;
+    }
+
+    .pillars-card-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .pillars-card-number {
+        font-size: 3.5rem;
+        top: 1rem;
+        right: 1.25rem;
+    }
+
+    .pillars-card-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .pillars-card-description {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .pillars-icon-wrapper {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Reduzir zoom visual para páginas mais "fundas" - mais espaço e profundidade */
+/* Aplicar apenas em telas grandes, não em mobile */
+@media (min-width: 1024px) {
+    html {
+        zoom: 0.80;
+        -ms-zoom: 0.80;
+    }
+
+    /* Fallback para navegadores que não suportam zoom */
+    @supports not (zoom: 0.80) {
+        body {
+            transform: scale(0.80);
+            transform-origin: top left;
+            width: 125%;
+            height: 125%;
+        }
+    }
+}
+
+/* Efeitos de profundidade 3D */
+.depth-container {
+    perspective: 1200px;
+    perspective-origin: center center;
+}
+
+.depth-layer-1 {
+    transform: translateZ(0);
+    transition: transform 0.3s ease;
+}
+
+.depth-layer-2 {
+    transform: translateZ(20px);
+    transition: transform 0.3s ease;
+}
+
+.depth-layer-3 {
+    transform: translateZ(40px);
+    transition: transform 0.3s ease;
+}
+
+.depth-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.depth-card:hover {
+    transform: translateY(-8px) translateZ(10px);
+}
+
+/* Sombras mais pronunciadas para profundidade */
+.shadow-depth-1 {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-depth-2 {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-depth-3 {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25), 0 32px 96px rgba(0, 0, 0, 0.2);
+}
+
+/* Espaçamento adicional entre elementos */
+.spacing-deep {
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .spacing-deep {
+        margin-bottom: 6rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .spacing-deep {
+        margin-bottom: 8rem;
+    }
+}
 
 

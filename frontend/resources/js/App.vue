@@ -53,7 +53,7 @@ export default {
             this.$nextTick(() => {
                 this.observeReveals();
             });
-        }
+        },
     },
     methods: {
         initRevealObserver() {
@@ -77,6 +77,54 @@ export default {
                     this.revealObserver.observe(el);
                 }
             });
+        },
+        handleLocaleChange(event) {
+            // Increment localeKey to force router-view re-render
+            this.localeKey++;
+            // Force update all components when locale changes
+            this.$nextTick(() => {
+                // Force update root
+                this.$forceUpdate();
+                // Force update all children recursively
+                this.forceUpdateAll(this);
+            });
+        },
+        forceUpdateAll(component) {
+            if (!component) return;
+            
+            try {
+                // Force update this component
+                if (component.$forceUpdate) {
+                    component.$forceUpdate();
+                }
+                
+                // Force update all children
+                if (component.$children && Array.isArray(component.$children)) {
+                    component.$children.forEach(child => {
+                        this.forceUpdateAll(child);
+                    });
+                }
+                
+                // Force update router view instances
+                if (component.$router && component.$router.currentRoute && component.$router.currentRoute.matched) {
+                    if (Array.isArray(component.$router.currentRoute.matched)) {
+                        component.$router.currentRoute.matched.forEach(record => {
+                            if (record && record.instances) {
+                                const instances = Object.values(record.instances);
+                                if (Array.isArray(instances)) {
+                                    instances.forEach(instance => {
+                                        if (instance && instance.$forceUpdate) {
+                                            instance.$forceUpdate();
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error('Error in forceUpdateAll:', error);
+            }
         }
     }
 }
@@ -134,17 +182,18 @@ html {
 }
 
 .hover-lift {
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
 }
 
 .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px) translateZ(15px);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .hover-lift:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px) translateZ(8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-reduced-motion: reduce) {

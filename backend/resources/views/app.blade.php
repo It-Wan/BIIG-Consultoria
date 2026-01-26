@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Biig Consultoria - Gestão Estratégica de Empreendimentos Imobiliários. Conectamos capital, viabilidade e execução para transformar projetos em negócios sólidos.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Biig Consultoria - Gestão Estratégica de Empreendimentos Imobiliários</title>

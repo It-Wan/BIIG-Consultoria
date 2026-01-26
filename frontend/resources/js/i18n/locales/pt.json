@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "home": "Home",
+    "servicos": "Serviços",
+    "sobre": "Sobre",
+    "contato": "Contato",
+    "login": "Login"
+  },
+  "home": {
+    "hero": {
+      "title": "Gestão estratégica de empreendimentos imobiliários",
+      "description": "Conectamos capital, viabilidade e execução para transformar projetos imobiliários em negócios sólidos.",
+      "cta1": "Falar com a BIIG",
+      "cta2": "Quero solução financeira pra minha obra",
+      "cta3": "Quero estruturar meu projeto"
+    },
+    "sobre": {
+      "title": "Sobre a BIIG",
+      "text1": "A BIIG atua na interseção entre finanças, engenharia e estratégia imobiliária,",
+      "text2": "estruturando empreendimentos desde a decisão de investimento até a contratação do capital. Mais do que consultoria, entregamos governança, previsibilidade e execução técnica para projetos imobiliários.",
+      "link": "Conheça mais sobre nós"
+    },
+    "pilares": {
+      "title": "Nossos Pilares de Atuação",
+      "estruturacao": {
+        "title": "Estruturação Financeira",
+        "description": "Decisões seguras começam com números bem construídos.",
+        "link": "Saiba mais"
+      },
+      "captacao": {
+        "title": "Captação de Capital",
+        "description": "O capital certo, na estrutura certa, no momento certo.",
+        "link": "Saiba mais"
+      },
+      "operacoes": {
+        "title": "Operações com a Caixa",
+        "description": "Especialistas em crédito imobiliário estruturado.",
+        "link": "Saiba mais"
+      }
+    },
+    "problema": {
+      "title": "O Problema",
+      "description": "Projetos lançados sem viabilidade consistente. Estruturas de capital mal dimensionadas. Dificuldade de acesso a crédito estruturado. Risco elevado na contratação e execução. Resultado: perda de valor, atraso e insegurança.",
+      "cards": {
+        "viabilidade": {
+          "title": "Viabilidade",
+          "pain": "O projeto parece bom, mas não tenho segurança se ele realmente se sustenta financeiramente.",
+          "solution": "Estruturamos estudos de viabilidade econômico-financeira completos, com modelagem de fluxo de caixa, cenários e indicadores claros de retorno, permitindo decisões seguras antes da aquisição ou do lançamento."
+        },
+        "terreno": {
+          "title": "Terreno",
+          "pain": "Tenho oportunidades de terreno, mas não sei qual realmente faz sentido para o meu portfólio.",
+          "solution": "Analisamos a viabilidade financeira do terreno dentro da estratégia do incorporador, considerando risco, retorno, estrutura de capital e impacto no caixa do grupo."
+        },
+        "caixa": {
+          "title": "Caixa",
+          "pain": "O empreendimento vende bem, mas o caixa não fecha como esperado.",
+          "solution": "Reestruturamos o fluxo de caixa do empreendimento, identificamos gargalos financeiros e ajustamos premissas para garantir previsibilidade, controle e sustentabilidade ao longo da execução."
+        },
+        "credito": {
+          "title": "Crédito / Caixa Econômica",
+          "pain": "Tenho dificuldade em aprovar e contratar financiamento com a Caixa.",
+          "solution": "Atuamos tecnicamente na estruturação e condução de operações junto à Caixa Econômica Federal, organizando documentação, premissas e interface com engenharia, jurídico e crédito."
+        },
+        "capital": {
+          "title": "Capital",
+          "pain": "Não sei qual a melhor combinação entre capital próprio, investidores e dívida.",
+          "solution": "Definimos a estrutura de capital mais eficiente para cada empreendimento, equilibrando dívida e equity para reduzir custo financeiro, melhorar retorno e viabilizar o projeto."
+        },
+        "governanca": {
+          "title": "Governança",
+          "pain": "Falta clareza financeira para decisões estratégicas do negócio.",
+          "solution": "Entregamos modelos financeiros estruturados que servem como base para governança, tomada de decisão, negociação com bancos e alinhamento com investidores."
+        }
+      }
+    },
+    "solucao": {
+      "title": "A Solução BIIG",
+      "description": "A BIIG estrutura o empreendimento de forma integrada, unindo inteligência financeira, solidez técnica e experiência institucional. Decisão certa → Capital certo → Execução segura. +R$ 7 bilhões em modelagem financeira estruturada. +R$ 1,3 bilhão em VGV viabilizado junto à Caixa. Atuação em projetos de alta complexidade técnica e financeira."
+    },
+    "cta": {
+      "title": "Pronto para estruturar seu projeto?",
+      "description": "A BIIG reduz riscos, estrutura capital e garante previsibilidade na implantação de empreendimentos imobiliários.",
+      "button1": "Vamos conversar sobre seu projeto",
+      "button2": "Falar no WhatsApp"
+    },
+    "etapas": {
+      "title": "A Solução BIIG",
+      "diagnostico": {
+        "title": "1. Diagnóstico",
+        "description": "Entendimento profundo da necessidade, dos objetivos e da situação atual do empreendimento, considerando aspectos financeiros, técnicos e estratégicos. Essa etapa fundamenta a construção do escopo e das premissas do projeto."
+      },
+      "escopo": {
+        "title": "2. Escopo de Trabalho",
+        "description": "Definição clara do método, das entregas e das etapas de execução, alinhadas à realidade e aos objetivos do cliente. O escopo orienta prazos, responsabilidades e critérios de sucesso."
+      },
+      "desenvolvimento": {
+        "title": "3. Desenvolvimento",
+        "description": "Execução da consultoria com base em uma trilha operacional e gerencial estruturada. Inclui análises técnicas, modelagens, interações com stakeholders e acompanhamento contínuo."
+      },
+      "entrega": {
+        "title": "4. Entrega",
+        "description": "Conclusão dos serviços com entrega de documentação técnica, modelos financeiros, relatórios e diretrizes consolidadas para tomada de decisão e execução do empreendimento."
+      },
+      "revisao": {
+        "title": "5. Revisão",
+        "description": "Acompanhamento da solução entregue, com ajustes, validações e aperfeiçoamentos, garantindo aderência prática e evolução do time do cliente."
+      }
+    },
+    "lideranca": {
+      "title": "Conheça Nossa Liderança Estratégica",
+      "priscila": {
+        "cargo": "Founder & Managing Partner",
+        "bio1": "Executiva com mais de 15 anos de experiência em finanças e estruturação de empreendimentos imobiliários, com atuação na modelagem econômico-financeira de projetos que somam mais de R$ 7 bilhões, apoiando decisões estratégicas, governança e previsibilidade financeira para incorporadoras.",
+        "bio2": "Founder & Managing Partner da BIIG – Brasil Inteligência Imobiliária e Gestão, lidera a estruturação financeira de empreendimentos e a viabilização de operações de captação de recursos para projetos com VGV superior a R$ 1,3 bilhão, junto à Caixa Econômica Federal.",
+        "bio3": "É formada em Contabilidade e Administração, com MBAs em Gestão Financeira e em Incorporação e Construção Imobiliária pela FGV."
+      },
+      "socio2": {
+        "nome": "Nome do Sócio 2",
+        "cargo": "Cargo / Especialidade",
+        "descricao": "Breve descrição profissional do segundo sócio."
+      }
+    }
+  },
+  "servicos": {
+    "title": "Nossos Serviços",
+    "subtitle": "Oferecemos soluções completas para estruturação, captação e execução de empreendimentos imobiliários.",
+    "cta": "Entre em Contato",
+    "estruturacao": {
+      "title": "Estruturação Financeira & Viabilidade",
+      "description": "Modelagem financeira imobiliária e estudos de viabilidade para decisões seguras de investimento.",
+      "paraQuem": "Terrenistas, incorporadores e investidores antes do lançamento ou aquisição.",
+      "tipo": "Produto de Entrada: Estruturação Financeira & Viabilidade."
+    },
+    "captacao": {
+      "title": "Captação e Estruturação de Capital",
+      "description": "Estruturação da melhor combinação entre dívida e equity para viabilizar o empreendimento.",
+      "paraQuem": "Projetos aprovados ou em fase final de estruturação.",
+      "tipo": "Produto de Valor: Captação e Estruturação de Capital."
+    },
+    "operacoes": {
+      "title": "Operações com a Caixa Econômica Federal",
+      "description": "Estruturação e condução técnica de operações junto à Caixa Econômica Federal.",
+      "paraQuem": "Empreendimentos que dependem de crédito imobiliário estruturado.",
+      "tipo": "Produto de Recorrência: Operações Estruturadas com a Caixa."
+    }
+  },
+  "sobre": {
+    "text1": "A BIIG atua na interseção entre finanças, engenharia e estratégia imobiliária, estruturando empreendimentos desde a decisão de investimento até a contratação do capital.",
+    "text2": "A BIIG nasce com o propósito de transformar ideias em empreendimentos imobiliários sólidos, conectando capital, propósito e execução por meio de gestão estratégica, inteligência financeira e excelência técnica.",
+    "text3": "Atuamos para estruturar decisões seguras, reduzir riscos e garantir previsibilidade, com a ambição de nos tornarmos referência nacional em gestão estratégica de incorporações e estruturação de investimentos imobiliários — uma empresa nascida no Norte, preparada para atuar em todo o Brasil."
+  }
+}
+

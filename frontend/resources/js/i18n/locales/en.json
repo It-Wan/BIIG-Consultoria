@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "home": "Home",
+    "servicos": "Services",
+    "sobre": "About",
+    "contato": "Contact",
+    "login": "Login"
+  },
+  "home": {
+    "hero": {
+      "title": "Strategic management of real estate developments",
+      "description": "We connect capital, viability and execution to transform real estate projects into solid businesses.",
+      "cta1": "Talk to BIIG",
+      "cta2": "I want a financial solution for my project",
+      "cta3": "I want to structure my project"
+    },
+    "sobre": {
+      "title": "About BIIG",
+      "text1": "BIIG operates at the intersection of finance, engineering and real estate strategy,",
+      "text2": "structuring developments from investment decision to capital contracting. More than consulting, we deliver governance, predictability and technical execution for real estate projects.",
+      "link": "Learn more about us"
+    },
+    "pilares": {
+      "title": "Our Pillars of Action",
+      "estruturacao": {
+        "title": "Financial Structuring",
+        "description": "Safe decisions start with well-built numbers.",
+        "link": "Learn more"
+      },
+      "captacao": {
+        "title": "Capital Raising",
+        "description": "The right capital, in the right structure, at the right time.",
+        "link": "Learn more"
+      },
+      "operacoes": {
+        "title": "Operations with Caixa",
+        "description": "Specialists in structured real estate credit.",
+        "link": "Learn more"
+      }
+    },
+    "problema": {
+      "title": "The Problem",
+      "description": "Projects launched without consistent viability. Undersized capital structures. Difficulty accessing structured credit. High risk in contracting and execution. Result: loss of value, delay and insecurity.",
+      "cards": {
+        "viabilidade": {
+          "title": "Viability",
+          "pain": "The project seems good, but I'm not sure if it really holds up financially.",
+          "solution": "We structure complete economic-financial viability studies, with cash flow modeling, scenarios and clear return indicators, enabling safe decisions before acquisition or launch."
+        },
+        "terreno": {
+          "title": "Land",
+          "pain": "I have land opportunities, but I don't know which one really makes sense for my portfolio.",
+          "solution": "We analyze the financial viability of the land within the developer's strategy, considering risk, return, capital structure and impact on the group's cash flow."
+        },
+        "caixa": {
+          "title": "Cash Flow",
+          "pain": "The development sells well, but the cash flow doesn't close as expected.",
+          "solution": "We restructure the development's cash flow, identify financial bottlenecks and adjust assumptions to ensure predictability, control and sustainability throughout execution."
+        },
+        "credito": {
+          "title": "Credit / Caixa Econômica",
+          "pain": "I have difficulty approving and contracting financing with Caixa.",
+          "solution": "We act technically in structuring and conducting operations with Caixa Econômica Federal, organizing documentation, assumptions and interface with engineering, legal and credit."
+        },
+        "capital": {
+          "title": "Capital",
+          "pain": "I don't know the best combination between equity, investors and debt.",
+          "solution": "We define the most efficient capital structure for each development, balancing debt and equity to reduce financial cost, improve return and make the project viable."
+        },
+        "governanca": {
+          "title": "Governance",
+          "pain": "Lack of financial clarity for strategic business decisions.",
+          "solution": "We deliver structured financial models that serve as a basis for governance, decision-making, bank negotiations and alignment with investors."
+        }
+      }
+    },
+    "solucao": {
+      "title": "The BIIG Solution",
+      "description": "BIIG structures the development in an integrated way, combining financial intelligence, technical solidity and institutional experience. Right decision → Right capital → Safe execution. +R$ 7 billion in structured financial modeling. +R$ 1.3 billion in VGV enabled with Caixa. Acting on projects of high technical and financial complexity."
+    },
+    "cta": {
+      "title": "Ready to structure your project?",
+      "description": "BIIG reduces risks, structures capital and ensures predictability in the implementation of real estate developments.",
+      "button1": "Let's talk about your project",
+      "button2": "Talk on WhatsApp"
+    },
+    "etapas": {
+      "title": "The BIIG Solution",
+      "diagnostico": {
+        "title": "1. Diagnosis",
+        "description": "Deep understanding of the need, objectives and current situation of the development, considering financial, technical and strategic aspects. This stage forms the foundation for building the scope and premises of the project."
+      },
+      "escopo": {
+        "title": "2. Scope of Work",
+        "description": "Clear definition of the method, deliverables and execution stages, aligned with the client's reality and objectives. The scope guides deadlines, responsibilities and success criteria."
+      },
+      "desenvolvimento": {
+        "title": "3. Development",
+        "description": "Execution of consulting based on a structured operational and managerial track. Includes technical analyses, modeling, stakeholder interactions and continuous monitoring."
+      },
+      "entrega": {
+        "title": "4. Delivery",
+        "description": "Completion of services with delivery of technical documentation, financial models, reports and consolidated guidelines for decision-making and execution of the development."
+      },
+      "revisao": {
+        "title": "5. Review",
+        "description": "Monitoring of the delivered solution, with adjustments, validations and improvements, ensuring practical adherence and evolution of the client's team."
+      }
+    },
+    "lideranca": {
+      "title": "Meet Our Strategic Leadership",
+      "priscila": {
+        "cargo": "Founder & Managing Partner",
+        "bio1": "Executive with over 15 years of experience in finance and real estate development structuring, working on economic-financial modeling of projects totaling more than R$ 7 billion, supporting strategic decisions, governance and financial predictability for developers.",
+        "bio2": "Founder & Managing Partner of BIIG – Brasil Inteligência Imobiliária e Gestão, leads the financial structuring of developments and the viability of capital raising operations for projects with VGV exceeding R$ 1.3 billion, with Caixa Econômica Federal.",
+        "bio3": "Graduated in Accounting and Administration, with MBAs in Financial Management and Real Estate Development and Construction from FGV."
+      },
+      "socio2": {
+        "nome": "Partner Name 2",
+        "cargo": "Role / Specialty",
+        "descricao": "Brief professional description of the second partner."
+      }
+    }
+  },
+  "servicos": {
+    "title": "Our Services",
+    "subtitle": "We offer complete solutions for structuring, raising capital and executing real estate developments.",
+    "cta": "Contact Us",
+    "estruturacao": {
+      "title": "Financial Structuring & Viability",
+      "description": "Real estate financial modeling and viability studies for safe investment decisions.",
+      "paraQuem": "Landowners, developers and investors before launch or acquisition.",
+      "tipo": "Entry Product: Financial Structuring & Viability."
+    },
+    "captacao": {
+      "title": "Capital Raising and Structuring",
+      "description": "Structuring the best combination between debt and equity to make the development viable.",
+      "paraQuem": "Approved projects or in final structuring phase.",
+      "tipo": "Value Product: Capital Raising and Structuring."
+    },
+    "operacoes": {
+      "title": "Operations with Caixa Econômica Federal",
+      "description": "Technical structuring and execution of operations with Caixa Econômica Federal.",
+      "paraQuem": "Developments that depend on structured real estate credit.",
+      "tipo": "Recurring Product: Structured Operations with Caixa."
+    }
+  },
+  "sobre": {
+    "text1": "BIIG operates at the intersection of finance, engineering and real estate strategy, structuring developments from investment decision to capital contracting.",
+    "text2": "BIIG is born with the purpose of transforming ideas into solid real estate developments, connecting capital, purpose and execution through strategic management, financial intelligence and technical excellence.",
+    "text3": "We work to structure safe decisions, reduce risks and ensure predictability, with the ambition of becoming a national reference in strategic management of developments and structuring of real estate investments — a company born in the North, prepared to operate throughout Brazil."
+  }
+}
+

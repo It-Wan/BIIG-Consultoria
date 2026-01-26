@@ -8,14 +8,14 @@
                         alt="BIIG"
                         class="h-14 w-auto mb-4"
                     />
-                    <p class="text-silver-400 text-sm leading-relaxed">
+                    <p class="text-silver-400 text-base leading-relaxed">
                         Gestão estratégica de empreendimentos imobiliários. Nascida no Norte, atuação nacional.
                     </p>
                 </div>
                 
                 <div>
-                    <h3 class="font-semibold mb-6 text-sm uppercase tracking-wide">Links Rápidos</h3>
-                    <ul class="space-y-3 text-sm text-silver-400">
+                    <h3 class="font-semibold mb-6 text-base uppercase tracking-wide">Links Rápidos</h3>
+                    <ul class="space-y-3 text-base text-silver-400">
                         <li>
                             <router-link to="/" class="hover:text-white transition-colors border-b border-transparent hover:border-white pb-1 inline-block">Home</router-link>
                         </li>
@@ -35,8 +35,8 @@
                 </div>
                 
                 <div>
-                    <h3 class="font-semibold mb-6 text-sm uppercase tracking-wide">Contato</h3>
-                    <ul class="space-y-3 text-sm text-silver-400">
+                    <h3 class="font-semibold mb-6 text-base uppercase tracking-wide">Contato</h3>
+                    <ul class="space-y-3 text-base text-silver-400">
                         <li>
                             <a href="mailto:corporativo@biig.com.br" class="hover:text-white transition-colors border-b border-transparent hover:border-white pb-1 inline-block">
                                 corporativo@biig.com.br
@@ -51,7 +51,7 @@
                 </div>
                 
                 <div>
-                    <h3 class="font-semibold mb-6 text-sm uppercase tracking-wide">Redes Sociais</h3>
+                    <h3 class="font-semibold mb-6 text-base uppercase tracking-wide">Redes Sociais</h3>
                     <div class="flex space-x-4">
                         <a 
                             href="https://linkedin.com/company/biig" 
@@ -68,11 +68,11 @@
             </div>
             
             <div class="border-t border-silver-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-silver-500">
+                <div class="flex flex-col md:flex-row justify-between items-center text-base text-silver-500">
                     <p>&copy; {{ new Date().getFullYear() }} Biig Consultoria. Todos os direitos reservados.</p>
                     <p class="mt-2 md:mt-0">CNPJ: 00.000.000/0001-00</p>
                 </div>
-                <p class="mt-4 text-center text-xs text-silver-500">
+                <p class="mt-4 text-center text-sm text-silver-500">
                     Developed by Nworks
                 </p>
             </div>
