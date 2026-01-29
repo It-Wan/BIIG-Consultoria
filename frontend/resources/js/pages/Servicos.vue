@@ -255,7 +255,7 @@ export default {
     name: 'Servicos',
     data() {
         return {
-            videoSrc: '/img/serv.mp4'
+            videoSrc: '/videos/servicos.mp4'
         }
     },
     mounted() {

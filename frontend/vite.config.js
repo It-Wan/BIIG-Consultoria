@@ -8,13 +8,46 @@ import { join } from 'path';
 function copyPublicDir() {
     return {
         name: 'copy-public-dir',
+        buildStart() {
+            // Copiar no início do build também para garantir
+            if (process.env.VERCEL) {
+                const publicDir = resolve(__dirname, 'public');
+                const outDir = resolve(__dirname, 'dist');
+                
+                if (existsSync(publicDir) && existsSync(outDir)) {
+                    function copyRecursive(src, dest) {
+                        const entries = readdirSync(src, { withFileTypes: true });
+                        
+                        for (const entry of entries) {
+                            const srcPath = join(src, entry.name);
+                            const destPath = join(dest, entry.name);
+                            
+                            if (entry.isDirectory()) {
+                                if (!existsSync(destPath)) {
+                                    mkdirSync(destPath, { recursive: true });
+                                }
+                                copyRecursive(srcPath, destPath);
+                            } else {
+                                copyFileSync(srcPath, destPath);
+                            }
+                        }
+                    }
+                    
+                    copyRecursive(publicDir, outDir);
+                }
+            }
+        },
         writeBundle() {
+            // Copiar novamente após o bundle ser escrito
             if (!process.env.VERCEL) return;
             
             const publicDir = resolve(__dirname, 'public');
             const outDir = resolve(__dirname, 'dist');
             
             if (!existsSync(publicDir)) return;
+            if (!existsSync(outDir)) {
+                mkdirSync(outDir, { recursive: true });
+            }
             
             function copyRecursive(src, dest) {
                 const entries = readdirSync(src, { withFileTypes: true });
