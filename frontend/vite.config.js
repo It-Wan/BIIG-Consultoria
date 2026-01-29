@@ -51,6 +51,8 @@ export default defineConfig({
         chunkSizeWarningLimit: 1000,
         // Garantir que assets estáticos sejam copiados corretamente
         assetsInlineLimit: 4096,
+        // Garantir que a pasta public seja copiada
+        copyPublicDir: true,
     },
     // Otimizações de CSS
     css: {
