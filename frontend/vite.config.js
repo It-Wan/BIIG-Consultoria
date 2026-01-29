@@ -1,6 +1,43 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
+import { copyFileSync, mkdirSync, readdirSync, existsSync } from 'fs';
+import { join } from 'path';
+
+// Plugin para garantir que a pasta public seja copiada
+function copyPublicDir() {
+    return {
+        name: 'copy-public-dir',
+        writeBundle() {
+            if (!process.env.VERCEL) return;
+            
+            const publicDir = resolve(__dirname, 'public');
+            const outDir = resolve(__dirname, 'dist');
+            
+            if (!existsSync(publicDir)) return;
+            
+            function copyRecursive(src, dest) {
+                const entries = readdirSync(src, { withFileTypes: true });
+                
+                for (const entry of entries) {
+                    const srcPath = join(src, entry.name);
+                    const destPath = join(dest, entry.name);
+                    
+                    if (entry.isDirectory()) {
+                        if (!existsSync(destPath)) {
+                            mkdirSync(destPath, { recursive: true });
+                        }
+                        copyRecursive(srcPath, destPath);
+                    } else {
+                        copyFileSync(srcPath, destPath);
+                    }
+                }
+            }
+            
+            copyRecursive(publicDir, outDir);
+        },
+    };
+}
 
 export default defineConfig({
     plugins: [
@@ -16,6 +53,7 @@ export default defineConfig({
                 },
             },
         }),
+        copyPublicDir(),
     ],
     resolve: {
         alias: {
