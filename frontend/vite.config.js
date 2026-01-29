@@ -84,7 +84,8 @@ export default defineConfig({
     build: {
         // Para Vercel, usar 'dist', para backend Laravel usar '../backend/public/build'
         outDir: process.env.VERCEL ? 'dist' : resolve(__dirname, '../backend/public/build'),
-        emptyOutDir: true,
+        // Não limpar o diretório se for Vercel, para não apagar arquivos da pasta public
+        emptyOutDir: !process.env.VERCEL,
         manifest: !process.env.VERCEL, // Manifest só é necessário para Laravel
         // Otimizações para melhor performance
         minify: 'esbuild', // Mais rápido que terser e já vem com Vite
