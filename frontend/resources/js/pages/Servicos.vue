@@ -11,7 +11,7 @@
                 muted
                 loop
                 playsinline
-                preload="auto"
+                preload="metadata"
                 style="min-width: 100%; min-height: 100%;"
                 @error="handleVideoError"
             ></video>

@@ -58,6 +58,8 @@
                                 style="display: block; min-height: 300px; max-height: 500px; object-fit: cover;"
                                 loading="lazy"
                                 decoding="async"
+                                width="1200"
+                                height="500"
                             />
                         </div>
                     </div>
@@ -70,6 +72,8 @@
                                     loading="eager"
                                     fetchpriority="high"
                                     decoding="async"
+                                    width="600"
+                                    height="520"
                                     class="w-full h-[300px] md:h-[420px] lg:h-[520px] object-cover relative z-10"
                                 />
                                 <div class="bg-white text-gray-900 text-center py-2 md:py-3 text-xs tracking-[0.2em] uppercase font-semibold">

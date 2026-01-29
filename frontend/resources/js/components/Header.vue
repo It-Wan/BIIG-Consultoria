@@ -23,6 +23,9 @@
                         alt="BIIG Consultoria"
                         loading="eager"
                         fetchpriority="high"
+                        decoding="sync"
+                        width="200"
+                        height="80"
                         :class="[
                             'w-auto transition-all duration-300 group-hover:opacity-80',
                             scrolledPast ? 'h-12 md:h-14' : 'h-14 md:h-16 lg:h-20',

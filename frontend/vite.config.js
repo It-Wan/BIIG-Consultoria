@@ -93,7 +93,7 @@ export default defineConfig({
         outDir: process.env.VERCEL ? 'dist' : resolve(__dirname, '../backend/public/build'),
         // O Vite copia public automaticamente após limpar, então habilitamos emptyOutDir
         // Nosso plugin garante cópia no final como backup
-        emptyOutDir: true,
+        emptyOutDir: !process.env.VERCEL,
         manifest: !process.env.VERCEL, // Manifest só é necessário para Laravel
         // Otimizações para melhor performance
         minify: 'esbuild', // Mais rápido que terser e já vem com Vite
@@ -103,8 +103,30 @@ export default defineConfig({
                 : resolve(__dirname, 'resources/js/app.js'),
             output: {
                 // Code splitting para melhor cache
-                manualChunks: {
-                    'vendor': ['vue', 'vue-router'],
+                manualChunks: (id) => {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('vue')) {
+                            return 'vue-vendor';
+                        }
+                        if (id.includes('vue-router')) {
+                            return 'router-vendor';
+                        }
+                        return 'vendor';
+                    }
+                },
+                // Otimizar nomes de chunks
+                chunkFileNames: 'js/[name]-[hash].js',
+                entryFileNames: 'js/[name]-[hash].js',
+                assetFileNames: (assetInfo) => {
+                    const info = assetInfo.name.split('.');
+                    const ext = info[info.length - 1];
+                    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+                        return 'img/[name]-[hash][extname]';
+                    }
+                    if (/woff2?|eot|ttf|otf/i.test(ext)) {
+                        return 'fonts/[name]-[hash][extname]';
+                    }
+                    return 'assets/[name]-[hash][extname]';
                 },
             },
         },

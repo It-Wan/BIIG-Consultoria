@@ -13,12 +13,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <!-- Preload de recursos críticos para melhorar LCP -->
+    <link rel="preload" href="/img/logo1.png" as="image" type="image/png" fetchpriority="high">
+    
     <!-- Fontes com display=swap para melhor LCP -->
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
     <div id="app"></div>
-    <script type="module" src="/resources/js/app.js"></script>
+    <script type="module" src="/resources/js/app.js" defer></script>
 </body>
 </html>
 

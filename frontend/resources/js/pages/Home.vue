@@ -29,6 +29,8 @@
                             alt="BIIG Logo"
                             loading="lazy"
                             decoding="async"
+                            width="400"
+                            height="160"
                             class="w-full max-w-md h-auto"
                         />
                     </div>
@@ -332,6 +334,8 @@
                                     alt="Priscila Martins"
                                     loading="lazy"
                                     decoding="async"
+                                    width="600"
+                                    height="700"
                                     class="w-full h-[450px] md:h-[550px] lg:h-[650px] xl:h-[700px] object-cover"
                                 />
                             </div>
@@ -391,6 +395,10 @@
                             <img 
                                 src="/img/predios.jpg" 
                                 alt="Prédios" 
+                                loading="lazy"
+                                decoding="async"
+                                width="1200"
+                                height="800"
                                 class="w-full h-full object-cover opacity-20 scale-150"
                             />
                             <!-- Gradiente para escurecer o lado esquerdo até o meio -->
