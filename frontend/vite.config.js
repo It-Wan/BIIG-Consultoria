@@ -6,49 +6,63 @@ import { join } from 'path';
 
 // Plugin para garantir que a pasta public seja copiada
 function copyPublicDir() {
-    return {
-        name: 'copy-public-dir',
-        closeBundle() {
-            // Usar closeBundle que é chamado após tudo estar pronto
-            if (!process.env.VERCEL) return;
+    let copied = false;
+    
+    function doCopy() {
+        if (!process.env.VERCEL || copied) return;
+        
+        const publicDir = resolve(__dirname, 'public');
+        const outDir = resolve(__dirname, 'dist');
+        
+        if (!existsSync(publicDir)) {
+            console.warn('[copy-public-dir] Pasta public não encontrada:', publicDir);
+            return;
+        }
+        
+        // Garantir que o diretório de saída existe
+        if (!existsSync(outDir)) {
+            mkdirSync(outDir, { recursive: true });
+            console.log('[copy-public-dir] Diretório dist criado:', outDir);
+        }
+        
+        function copyRecursive(src, dest) {
+            const entries = readdirSync(src, { withFileTypes: true });
             
-            const publicDir = resolve(__dirname, 'public');
-            const outDir = resolve(__dirname, 'dist');
-            
-            if (!existsSync(publicDir)) {
-                console.warn('[copy-public-dir] Pasta public não encontrada:', publicDir);
-                return;
-            }
-            
-            // Garantir que o diretório de saída existe
-            if (!existsSync(outDir)) {
-                mkdirSync(outDir, { recursive: true });
-                console.log('[copy-public-dir] Diretório dist criado:', outDir);
-            }
-            
-            function copyRecursive(src, dest) {
-                const entries = readdirSync(src, { withFileTypes: true });
+            for (const entry of entries) {
+                const srcPath = join(src, entry.name);
+                const destPath = join(dest, entry.name);
                 
-                for (const entry of entries) {
-                    const srcPath = join(src, entry.name);
-                    const destPath = join(dest, entry.name);
-                    
-                    if (entry.isDirectory()) {
-                        if (!existsSync(destPath)) {
-                            mkdirSync(destPath, { recursive: true });
-                        }
-                        copyRecursive(srcPath, destPath);
-                    } else {
-                        // Copiar arquivo
-                        copyFileSync(srcPath, destPath);
-                        console.log('[copy-public-dir] Copiado:', entry.name);
+                if (entry.isDirectory()) {
+                    if (!existsSync(destPath)) {
+                        mkdirSync(destPath, { recursive: true });
                     }
+                    copyRecursive(srcPath, destPath);
+                } else {
+                    // Copiar arquivo
+                    copyFileSync(srcPath, destPath);
                 }
             }
-            
-            console.log('[copy-public-dir] Iniciando cópia de', publicDir, 'para', outDir);
-            copyRecursive(publicDir, outDir);
-            console.log('[copy-public-dir] Cópia concluída!');
+        }
+        
+        console.log('[copy-public-dir] Iniciando cópia de', publicDir, 'para', outDir);
+        copyRecursive(publicDir, outDir);
+        console.log('[copy-public-dir] Cópia concluída!');
+        copied = true;
+    }
+    
+    return {
+        name: 'copy-public-dir',
+        buildStart() {
+            // Copiar no início do build
+            doCopy();
+        },
+        writeBundle() {
+            // Copiar após escrever o bundle
+            doCopy();
+        },
+        closeBundle() {
+            // Copiar no final para garantir
+            doCopy();
         },
     };
 }
