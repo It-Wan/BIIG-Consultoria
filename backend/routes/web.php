@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\SobreController;
-use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ContatoController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

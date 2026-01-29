@@ -1,0 +1,16 @@
+{
+  "name": "biig-consultoria-root",
+  "version": "1.0.0",
+  "description": "Scripts helper para o projeto BIIG Consultoria",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && yarn build",
+    "build:npm": "cd frontend && npm run build",
+    "dev": "cd frontend && yarn dev",
+    "dev:npm": "cd frontend && npm run dev",
+    "install:frontend": "cd frontend && yarn install",
+    "install:backend": "cd backend && composer install",
+    "install:all": "cd frontend && yarn install && cd ../backend && composer install"
+  }
+}
+

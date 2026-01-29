@@ -77,54 +77,6 @@ export default {
                     this.revealObserver.observe(el);
                 }
             });
-        },
-        handleLocaleChange(event) {
-            // Increment localeKey to force router-view re-render
-            this.localeKey++;
-            // Force update all components when locale changes
-            this.$nextTick(() => {
-                // Force update root
-                this.$forceUpdate();
-                // Force update all children recursively
-                this.forceUpdateAll(this);
-            });
-        },
-        forceUpdateAll(component) {
-            if (!component) return;
-            
-            try {
-                // Force update this component
-                if (component.$forceUpdate) {
-                    component.$forceUpdate();
-                }
-                
-                // Force update all children
-                if (component.$children && Array.isArray(component.$children)) {
-                    component.$children.forEach(child => {
-                        this.forceUpdateAll(child);
-                    });
-                }
-                
-                // Force update router view instances
-                if (component.$router && component.$router.currentRoute && component.$router.currentRoute.matched) {
-                    if (Array.isArray(component.$router.currentRoute.matched)) {
-                        component.$router.currentRoute.matched.forEach(record => {
-                            if (record && record.instances) {
-                                const instances = Object.values(record.instances);
-                                if (Array.isArray(instances)) {
-                                    instances.forEach(instance => {
-                                        if (instance && instance.$forceUpdate) {
-                                            instance.$forceUpdate();
-                                        }
-                                    });
-                                }
-                            }
-                        });
-                    }
-                }
-            } catch (error) {
-                console.error('Error in forceUpdateAll:', error);
-            }
         }
     }
 }

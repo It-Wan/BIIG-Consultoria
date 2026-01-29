@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 use App\Mail\ContatoMail;
 
 class ContatoController extends Controller
@@ -33,8 +34,19 @@ class ContatoController extends Controller
         }
 
         try {
-            Mail::to('corporativo@biig.com.br')->send(new ContatoMail($request->all()));
+            $dados = $request->only(['nome', 'email', 'telefone', 'empresa', 'tipo_projeto', 'mensagem']);
+            Mail::to('corporativo@biig.com.br')->send(new ContatoMail($dados));
+            
+            Log::info('Formulário de contato enviado', [
+                'email' => $dados['email'],
+                'nome' => $dados['nome']
+            ]);
         } catch (\Throwable $e) {
+            Log::error('Erro ao enviar email de contato', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
             return response()->json([
                 'success' => false,
                 'message' => 'Não foi possível enviar a mensagem no momento. Tente novamente mais tarde.'

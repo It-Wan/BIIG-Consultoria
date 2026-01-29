@@ -42,10 +42,13 @@ Site institucional da Biig Consultoria - Gestão Estratégica de Empreendimentos
 1. **Home** (`/`) - Página inicial com hero, pilares, clientes e CTA
 2. **Serviços** (`/servicos`) - Detalhamento dos 3 serviços principais
 3. **Sobre** (`/sobre`) - História, missão, visão, valores e sócios
-4. **Clientes** (`/clientes`) - Grid de logos dos clientes
+4. **Login** (`/login`) - Página de login
 5. **Contato** (`/contato`) - Formulário de contato e informações
 
 ## Instalação
+
+> **📦 Instalando a partir do arquivo `site.zip`?**  
+> Consulte o arquivo **[INSTRUCOES_INSTALACAO.md](./INSTRUCOES_INSTALACAO.md)** para um guia completo e detalhado de instalação em uma nova máquina.
 
 ### Pré-requisitos
 
@@ -126,7 +129,6 @@ colors: {
 
 ### Conteúdo
 
-- **Logos de clientes**: Adicione as imagens em `backend/public/images/clientes/` e atualize `Clientes.vue`
 - **Fotos dos sócios**: Adicione em `backend/public/images/socios/` e atualize `Sobre.vue`
 - **Informações de contato**: Atualize em `Contato.vue` e `Footer.vue`
 
