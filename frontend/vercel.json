@@ -1,12 +1,12 @@
 {
-  "buildCommand": "VERCEL=true npm run build",
+  "buildCommand": "VERCEL=true npm run build:vercel",
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/((?!\\.).)*$",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
