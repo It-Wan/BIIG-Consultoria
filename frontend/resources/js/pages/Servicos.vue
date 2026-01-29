@@ -259,6 +259,13 @@ export default {
             videoSrc: '/videos/serv.mp4'
         }
     },
+    methods: {
+        handleVideoError(event) {
+            console.error('Erro ao carregar vídeo:', event);
+            console.error('Tentando carregar:', this.videoSrc);
+            console.error('URL completa:', window.location.origin + this.videoSrc);
+        }
+    },
     mounted() {
         const video = this.$refs.heroVideo;
         if (video && video.play) {
