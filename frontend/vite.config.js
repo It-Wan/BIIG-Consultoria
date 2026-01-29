@@ -8,45 +8,22 @@ import { join } from 'path';
 function copyPublicDir() {
     return {
         name: 'copy-public-dir',
-        buildStart() {
-            // Copiar no início do build também para garantir
-            if (process.env.VERCEL) {
-                const publicDir = resolve(__dirname, 'public');
-                const outDir = resolve(__dirname, 'dist');
-                
-                if (existsSync(publicDir) && existsSync(outDir)) {
-                    function copyRecursive(src, dest) {
-                        const entries = readdirSync(src, { withFileTypes: true });
-                        
-                        for (const entry of entries) {
-                            const srcPath = join(src, entry.name);
-                            const destPath = join(dest, entry.name);
-                            
-                            if (entry.isDirectory()) {
-                                if (!existsSync(destPath)) {
-                                    mkdirSync(destPath, { recursive: true });
-                                }
-                                copyRecursive(srcPath, destPath);
-                            } else {
-                                copyFileSync(srcPath, destPath);
-                            }
-                        }
-                    }
-                    
-                    copyRecursive(publicDir, outDir);
-                }
-            }
-        },
-        writeBundle() {
-            // Copiar novamente após o bundle ser escrito
+        closeBundle() {
+            // Usar closeBundle que é chamado após tudo estar pronto
             if (!process.env.VERCEL) return;
             
             const publicDir = resolve(__dirname, 'public');
             const outDir = resolve(__dirname, 'dist');
             
-            if (!existsSync(publicDir)) return;
+            if (!existsSync(publicDir)) {
+                console.warn('[copy-public-dir] Pasta public não encontrada:', publicDir);
+                return;
+            }
+            
+            // Garantir que o diretório de saída existe
             if (!existsSync(outDir)) {
                 mkdirSync(outDir, { recursive: true });
+                console.log('[copy-public-dir] Diretório dist criado:', outDir);
             }
             
             function copyRecursive(src, dest) {
@@ -62,12 +39,16 @@ function copyPublicDir() {
                         }
                         copyRecursive(srcPath, destPath);
                     } else {
+                        // Copiar arquivo
                         copyFileSync(srcPath, destPath);
+                        console.log('[copy-public-dir] Copiado:', entry.name);
                     }
                 }
             }
             
+            console.log('[copy-public-dir] Iniciando cópia de', publicDir, 'para', outDir);
             copyRecursive(publicDir, outDir);
+            console.log('[copy-public-dir] Cópia concluída!');
         },
     };
 }
