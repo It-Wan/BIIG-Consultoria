@@ -1,8 +1,13 @@
-import { copyFileSync, mkdirSync, readdirSync, existsSync, statSync } from 'fs';
-import { join, resolve } from 'path';
+import { copyFileSync, mkdirSync, readdirSync, existsSync } from 'fs';
+import { join, resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const publicDir = resolve(process.cwd(), 'public');
-const outDir = resolve(process.cwd(), 'dist');
+// Obter diretório atual do arquivo (ES modules)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const publicDir = resolve(__dirname, 'public');
+const outDir = resolve(__dirname, 'dist');
 
 if (!existsSync(publicDir)) {
     console.warn('Pasta public não encontrada:', publicDir);
