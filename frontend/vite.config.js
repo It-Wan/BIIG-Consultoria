@@ -3,11 +3,35 @@ import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [
+        vue(),
+        // Plugin para garantir que caminhos absolutos da pasta public não sejam tratados como imports
+        {
+            name: 'ignore-public-assets',
+            resolveId(id) {
+                // Se o ID começa com /img/ ou /videos/, retornar null para que o Vite não tente resolver como módulo
+                // O Vite automaticamente copia arquivos da pasta public, então não precisamos processá-los
+                if (id.startsWith('/img/') || id.startsWith('/videos/')) {
+                    // Retornar um ID falso que o Vite não tentará resolver
+                    return '\0' + id;
+                }
+                return null;
+            },
+            load(id) {
+                // Se for um ID que marcamos, retornar string vazia
+                if (id.startsWith('\0/img/') || id.startsWith('\0/videos/')) {
+                    return '';
+                }
+                return null;
+            },
+        },
+    ],
     resolve: {
         alias: {
             '@': resolve(__dirname, 'resources/js'),
         },
+        // Garantir que caminhos absolutos começando com / não sejam tratados como imports
+        dedupe: ['vue', 'vue-router'],
     },
     server: {
         host: '0.0.0.0',
@@ -34,6 +58,8 @@ export default defineConfig({
         },
         // Chunk size warnings
         chunkSizeWarningLimit: 1000,
+        // Garantir que assets estáticos sejam copiados corretamente
+        assetsInlineLimit: 4096,
     },
     // Otimizações de CSS
     css: {
@@ -41,5 +67,7 @@ export default defineConfig({
     },
     // Configuração para copiar assets públicos
     publicDir: 'public',
+    // Garantir que o Vite trate corretamente arquivos estáticos
+    assetsInclude: ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.gif', '**/*.svg', '**/*.mp4'],
 });
 
