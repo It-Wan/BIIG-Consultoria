@@ -13,6 +13,7 @@
                 playsinline
                 preload="auto"
                 style="min-width: 100%; min-height: 100%;"
+                @error="handleVideoError"
             ></video>
             <div class="absolute inset-0 bg-black/40 z-5 rounded-2xl"></div>
             
