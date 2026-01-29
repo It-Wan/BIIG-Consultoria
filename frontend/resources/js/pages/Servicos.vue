@@ -256,7 +256,7 @@ export default {
     name: 'Servicos',
     data() {
         return {
-            videoSrc: '/videos/serv.mp4'
+            videoSrc: '/img/biig.mp4'
         }
     },
     methods: {
