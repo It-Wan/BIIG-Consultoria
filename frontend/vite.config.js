@@ -4,27 +4,18 @@ import { resolve } from 'path';
 
 export default defineConfig({
     plugins: [
-        vue(),
-        // Plugin para garantir que caminhos absolutos da pasta public não sejam tratados como imports
-        {
-            name: 'ignore-public-assets',
-            resolveId(id) {
-                // Se o ID começa com /img/ ou /videos/, retornar null para que o Vite não tente resolver como módulo
-                // O Vite automaticamente copia arquivos da pasta public, então não precisamos processá-los
-                if (id.startsWith('/img/') || id.startsWith('/videos/')) {
-                    // Retornar um ID falso que o Vite não tentará resolver
-                    return '\0' + id;
-                }
-                return null;
+        vue({
+            // Configurar para não transformar URLs de assets que começam com /
+            // Isso evita que o Vite tente importar arquivos da pasta public como módulos
+            template: {
+                transformAssetUrls: {
+                    // Desabilitar transformação para caminhos absolutos (que começam com /)
+                    base: null,
+                    // Manter transformação apenas para caminhos relativos
+                    includeAbsolute: false,
+                },
             },
-            load(id) {
-                // Se for um ID que marcamos, retornar string vazia
-                if (id.startsWith('\0/img/') || id.startsWith('\0/videos/')) {
-                    return '';
-                }
-                return null;
-            },
-        },
+        }),
     ],
     resolve: {
         alias: {
