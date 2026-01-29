@@ -52,16 +52,9 @@ function copyPublicDir() {
     
     return {
         name: 'copy-public-dir',
-        buildStart() {
-            // Copiar no início do build
-            doCopy();
-        },
-        writeBundle() {
-            // Copiar após escrever o bundle
-            doCopy();
-        },
         closeBundle() {
-            // Copiar no final para garantir
+            // Copiar no final após o Vite ter copiado (ou como backup se não copiou)
+            // closeBundle é executado após tudo estar pronto
             doCopy();
         },
     };
@@ -98,8 +91,9 @@ export default defineConfig({
     build: {
         // Para Vercel, usar 'dist', para backend Laravel usar '../backend/public/build'
         outDir: process.env.VERCEL ? 'dist' : resolve(__dirname, '../backend/public/build'),
-        // Não limpar o diretório se for Vercel, para não apagar arquivos da pasta public
-        emptyOutDir: !process.env.VERCEL,
+        // O Vite copia public automaticamente após limpar, então habilitamos emptyOutDir
+        // Nosso plugin garante cópia no final como backup
+        emptyOutDir: true,
         manifest: !process.env.VERCEL, // Manifest só é necessário para Laravel
         // Otimizações para melhor performance
         minify: 'esbuild', // Mais rápido que terser e já vem com Vite
