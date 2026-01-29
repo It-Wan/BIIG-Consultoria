@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--no-warnings' vite",
     "build": "vite build",
-    "build:vercel": "VERCEL=true vite build && node -e \"const fs=require('fs');const path=require('path');function cp(src,dest){const s=fs.statSync(src);if(s.isDirectory()){if(!fs.existsSync(dest))fs.mkdirSync(dest,{recursive:true});fs.readdirSync(src).forEach(f=>cp(path.join(src,f),path.join(dest,f)));}else{fs.copyFileSync(src,dest);}}if(process.env.VERCEL&&fs.existsSync('public')&&fs.existsSync('dist')){cp('public','dist');console.log('Public folder copied!');}\"",
+    "build:vercel": "VERCEL=true vite build && node copy-public.js",
     "watch": "vite build --watch"
   },
   "dependencies": {
