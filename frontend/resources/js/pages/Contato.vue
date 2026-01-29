@@ -15,8 +15,18 @@
         </section>
 
         <!-- Formulário e Informações -->
-        <section class="section-padding bg-[#0b0b0b]">
-            <div class="container-custom">
+        <section class="section-padding bg-[#0b0b0b] relative overflow-hidden">
+            <!-- Imagem de fundo com opacidade -->
+            <div class="absolute inset-0 z-0">
+                <img 
+                    src="/img/predios.jpg" 
+                    alt="Prédios" 
+                    class="w-full h-full object-cover opacity-20"
+                />
+                <!-- Gradiente para escurecer o lado esquerdo e deixar o direito mais visível -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0b0b0b]/90 via-[#0b0b0b]/70 to-[#0b0b0b]/40"></div>
+            </div>
+            <div class="container-custom relative z-10">
                 <div class="max-w-6xl mx-auto px-4">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                         <!-- Formulário -->
@@ -35,10 +45,14 @@
                                         type="text"
                                         id="nome"
                                         v-model="form.nome"
-                                        required
-                                        class="w-full px-4 py-3 border border-silver-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                                        @input="limparErro('nome')"
+                                        :class="[
+                                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors',
+                                            errors.nome ? 'border-red-500' : 'border-silver-300'
+                                        ]"
                                         placeholder="Seu nome completo"
                                     />
+                                    <p v-if="errors.nome" class="mt-1 text-sm text-red-400">{{ errors.nome[0] || errors.nome }}</p>
                                 </div>
 
                                 <div>
@@ -49,10 +63,14 @@
                                         type="email"
                                         id="email"
                                         v-model="form.email"
-                                        required
-                                        class="w-full px-4 py-3 border border-silver-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                                        @input="limparErro('email')"
+                                        :class="[
+                                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors',
+                                            errors.email ? 'border-red-500' : 'border-silver-300'
+                                        ]"
                                         placeholder="seu@email.com"
                                     />
+                                    <p v-if="errors.email" class="mt-1 text-sm text-red-400">{{ errors.email[0] || errors.email }}</p>
                                 </div>
 
                                 <div>
@@ -63,10 +81,16 @@
                                         type="tel"
                                         id="telefone"
                                         v-model="form.telefone"
-                                        required
-                                        class="w-full px-4 py-3 border border-silver-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                                        @input="aplicarMascaraTelefone"
+                                        @focus="limparErro('telefone')"
+                                        maxlength="15"
+                                        :class="[
+                                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors',
+                                            errors.telefone ? 'border-red-500' : 'border-silver-300'
+                                        ]"
                                         placeholder="(00) 00000-0000"
                                     />
+                                    <p v-if="errors.telefone" class="mt-1 text-sm text-red-400">{{ errors.telefone[0] || errors.telefone }}</p>
                                 </div>
 
                                 <div>
@@ -106,19 +130,33 @@
                                     <textarea
                                         id="mensagem"
                                         v-model="form.mensagem"
-                                        required
+                                        @input="limparErro('mensagem')"
                                         rows="5"
-                                        class="w-full px-4 py-3 border border-silver-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none"
+                                        :class="[
+                                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none',
+                                            errors.mensagem ? 'border-red-500' : 'border-silver-300'
+                                        ]"
                                         placeholder="Conte-nos sobre seu projeto..."
                                     ></textarea>
+                                    <p v-if="errors.mensagem" class="mt-1 text-sm text-red-400">{{ errors.mensagem[0] || errors.mensagem }}</p>
                                 </div>
 
-                                <div v-if="mensagemSucesso" class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
-                                    {{ mensagemSucesso }}
+                                <div v-if="mensagemSucesso" class="bg-green-500/20 border border-green-500/50 text-green-300 px-4 py-3 rounded-lg">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                        </svg>
+                                        {{ mensagemSucesso }}
+                                    </div>
                                 </div>
 
-                                <div v-if="mensagemErro" class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
-                                    {{ mensagemErro }}
+                                <div v-if="mensagemErro" class="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                        </svg>
+                                        {{ mensagemErro }}
+                                    </div>
                                 </div>
 
                                 <button
@@ -161,8 +199,8 @@
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-white mb-1">WhatsApp</h3>
-                                        <a href="https://wa.me/5591999999999" target="_blank" class="text-silver-200 hover:text-white">
-                                            (91) 99999-9999
+                                        <a :href="`https://wa.me/${whatsappNumber}`" target="_blank" class="text-silver-200 hover:text-white">
+                                            {{ whatsappDisplayNumber }}
                                         </a>
                                     </div>
                                 </div>
@@ -210,40 +248,148 @@ export default {
                 tipo_projeto: '',
                 mensagem: ''
             },
+            errors: {},
             enviando: false,
             mensagemSucesso: '',
-            mensagemErro: ''
+            mensagemErro: '',
+            whatsappNumber: '5591999999999' // Número do WhatsApp da BIIG (formato: 55 + DDD + número)
+        }
+    },
+    computed: {
+        whatsappDisplayNumber() {
+            // Formatar número para exibição: (91) 99999-9999
+            const num = this.whatsappNumber.replace(/\D/g, '');
+            if (num.length >= 12) {
+                const ddd = num.substring(2, 4);
+                const parte1 = num.substring(4, 9);
+                const parte2 = num.substring(9);
+                return `(${ddd}) ${parte1}-${parte2}`;
+            }
+            return this.whatsappNumber;
         }
     },
     methods: {
-        async enviarMensagem() {
-            this.enviando = true;
+        aplicarMascaraTelefone(event) {
+            let value = event.target.value.replace(/\D/g, '');
+            
+            if (value.length <= 10) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else {
+                value = value.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+            }
+            
+            this.form.telefone = value;
+        },
+        
+        limparErro(campo) {
+            if (this.errors[campo]) {
+                delete this.errors[campo];
+            }
+        },
+        
+        validarFormulario() {
+            this.errors = {};
+            let valido = true;
+            
+            if (!this.form.nome || this.form.nome.trim().length < 2) {
+                this.errors.nome = 'O nome deve ter pelo menos 2 caracteres.';
+                valido = false;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!this.form.email || !emailRegex.test(this.form.email)) {
+                this.errors.email = 'Por favor, insira um email válido.';
+                valido = false;
+            }
+            
+            const telefoneLimpo = this.form.telefone.replace(/\D/g, '');
+            if (!this.form.telefone || telefoneLimpo.length < 10) {
+                this.errors.telefone = 'Por favor, insira um telefone válido.';
+                valido = false;
+            }
+            
+            if (!this.form.mensagem || this.form.mensagem.trim().length < 10) {
+                this.errors.mensagem = 'A mensagem deve ter pelo menos 10 caracteres.';
+                valido = false;
+            }
+            
+            return valido;
+        },
+        
+        formatarMensagemWhatsApp() {
+            const tiposProjeto = {
+                'estruturacao-financeira': 'Estruturação Financeira',
+                'captacao-capital': 'Captação de Capital',
+                'operacoes-caixa': 'Operações com a Caixa',
+                'outro': 'Outro'
+            };
+            
+            let mensagem = `*Nova mensagem do formulário de contato - BIIG*\n\n`;
+            mensagem += `*Nome:* ${this.form.nome}\n`;
+            mensagem += `*Email:* ${this.form.email}\n`;
+            mensagem += `*Telefone:* ${this.form.telefone}\n`;
+            
+            if (this.form.empresa) {
+                mensagem += `*Empresa:* ${this.form.empresa}\n`;
+            }
+            
+            if (this.form.tipo_projeto) {
+                const tipoFormatado = tiposProjeto[this.form.tipo_projeto] || this.form.tipo_projeto;
+                mensagem += `*Tipo de Projeto/Interesse:* ${tipoFormatado}\n`;
+            }
+            
+            mensagem += `\n*Mensagem:*\n${this.form.mensagem}`;
+            
+            return encodeURIComponent(mensagem);
+        },
+        
+        enviarParaWhatsApp() {
+            const mensagemFormatada = this.formatarMensagemWhatsApp();
+            const whatsappUrl = `https://wa.me/${this.whatsappNumber}?text=${mensagemFormatada}`;
+            
+            // Abrir WhatsApp em nova aba
+            window.open(whatsappUrl, '_blank');
+            
+            // Mostrar mensagem de sucesso
+            this.mensagemSucesso = 'Redirecionando para o WhatsApp...';
+            
+            // Limpar formulário após um breve delay
+            setTimeout(() => {
+                this.form = {
+                    nome: '',
+                    email: '',
+                    telefone: '',
+                    empresa: '',
+                    tipo_projeto: '',
+                    mensagem: ''
+                };
+                this.mensagemSucesso = 'Formulário enviado! Verifique o WhatsApp.';
+                
+                // Limpar mensagem após 5 segundos
+                setTimeout(() => {
+                    this.mensagemSucesso = '';
+                }, 5000);
+            }, 500);
+        },
+        
+        enviarMensagem() {
+            // Limpar mensagens anteriores
             this.mensagemSucesso = '';
             this.mensagemErro = '';
-
-            try {
-                const response = await window.axios.post('/contato', this.form);
-                
-                if (response.data.success) {
-                    this.mensagemSucesso = response.data.message;
-                    this.form = {
-                        nome: '',
-                        email: '',
-                        telefone: '',
-                        empresa: '',
-                        tipo_projeto: '',
-                        mensagem: ''
-                    };
-                }
-            } catch (error) {
-                if (error.response && error.response.data.errors) {
-                    this.mensagemErro = 'Por favor, verifique os campos do formulário.';
-                } else {
-                    this.mensagemErro = 'Ocorreu um erro ao enviar a mensagem. Tente novamente.';
-                }
-            } finally {
-                this.enviando = false;
+            this.errors = {};
+            
+            // Validar formulário
+            if (!this.validarFormulario()) {
+                this.mensagemErro = 'Por favor, corrija os erros no formulário.';
+                return;
             }
+            
+            this.enviando = true;
+            
+            // Enviar para WhatsApp
+            this.enviarParaWhatsApp();
+            
+            this.enviando = false;
         }
     }
 }

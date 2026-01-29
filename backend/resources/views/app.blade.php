@@ -7,10 +7,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Biig Consultoria - Gestão Estratégica de Empreendimentos Imobiliários</title>
     <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Resource Hints para melhor performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload de recursos críticos -->
+    @if(file_exists(public_path('img/biig-poster.jpg')))
+    <link rel="preload" href="{{ asset('img/biig-poster.jpg') }}" as="image" type="image/jpeg">
+    @endif
+    @if(request()->is('sobre') && file_exists(public_path('img/sobre1.jpg')))
+    <link rel="preload" href="{{ asset('img/sobre1.jpg') }}" as="image" type="image/jpeg" fetchpriority="high">
+    @endif
+    
+    <!-- Fontes com display=swap para melhor LCP -->
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     @php
         // Detectar se Vite está rodando (arquivo hot existe quando yarn dev está ativo)

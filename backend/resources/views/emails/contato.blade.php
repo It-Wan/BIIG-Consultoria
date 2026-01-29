@@ -37,7 +37,21 @@
                                     </tr>
                                     <tr>
                                         <td style="padding: 6px 0; font-weight: 600;">Interesse:</td>
-                                        <td style="padding: 6px 0;">{{ $data['tipo_projeto'] ?? '-' }}</td>
+                                        <td style="padding: 6px 0;">
+                                            @if(!empty($data['tipo_projeto']))
+                                                @php
+                                                    $tipos = [
+                                                        'estruturacao-financeira' => 'Estruturação Financeira',
+                                                        'captacao-capital' => 'Captação de Capital',
+                                                        'operacoes-caixa' => 'Operações com a Caixa',
+                                                        'outro' => 'Outro'
+                                                    ];
+                                                    echo $tipos[$data['tipo_projeto']] ?? $data['tipo_projeto'];
+                                                @endphp
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                     </tr>
                                 </table>
                                 <div style="margin-top: 20px;">

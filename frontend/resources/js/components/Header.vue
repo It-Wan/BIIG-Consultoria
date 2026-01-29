@@ -1,19 +1,32 @@
 <template>
     <header 
         :class="[
-            'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-            'bg-[#0b0b0b]'
+            'fixed top-4 left-0 right-0 z-50 transition-all duration-300',
+            {
+                'navbar--color--secondary navbar--size--md': scrolledPast,
+                'navbar--color--ghost navbar--size--xl': !scrolledPast
+            }
         ]"
+        :data-start-color="'navbar--color--ghost'"
+        :data-start-size="'navbar--size--xl'"
+        :data-into-color="'navbar--color--secondary'"
+        :data-into-size="'navbar--size--md'"
     >
         <nav class="container-custom max-w-none mx-0 px-3">
-            <div class="flex items-center h-20 md:h-24">
+            <div :class="[
+                'flex items-center transition-all duration-300',
+                scrolledPast ? 'h-16 md:h-20' : 'h-20 md:h-24 lg:h-28'
+            ]">
                 <router-link to="/" class="flex items-center group ml-8 md:ml-12">
                     <img
                         src="/img/logo1.png"
                         alt="BIIG Consultoria"
+                        loading="eager"
+                        fetchpriority="high"
                         :class="[
-                            'h-14 md:h-16 w-auto transition-opacity group-hover:opacity-80',
-                            !shouldShowWhiteBackground && 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+                            'w-auto transition-all duration-300 group-hover:opacity-80',
+                            scrolledPast ? 'h-12 md:h-14' : 'h-14 md:h-16 lg:h-20',
+                            !scrolledPast && 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
                         ]"
                     />
                 </router-link>
@@ -23,33 +36,36 @@
                         <router-link 
                             to="/" 
                             :class="[
-                                'font-semibold text-sm uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                'font-semibold uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                scrolledPast ? 'text-sm' : 'text-sm md:text-base',
                                 'text-white drop-shadow-2xl hover:text-white/80',
                                 $route.name === 'home' && 'border-white'
                             ]"
-                            :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                            :style="linkStyle"
                         >
                             Home
                         </router-link>
                         <router-link 
                             to="/servicos" 
                             :class="[
-                                'font-semibold text-sm uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                'font-semibold uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                scrolledPast ? 'text-sm' : 'text-sm md:text-base',
                                 'text-white drop-shadow-2xl hover:text-white/80',
                                 $route.name === 'servicos' && 'border-white'
                             ]"
-                            :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                            :style="linkStyle"
                         >
                             Serviços
                         </router-link>
                         <router-link 
                             to="/sobre" 
                             :class="[
-                                'font-semibold text-sm uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                'font-semibold uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                scrolledPast ? 'text-sm' : 'text-sm md:text-base',
                                 'text-white drop-shadow-2xl hover:text-white/80',
                                 $route.name === 'sobre' && 'border-white'
                             ]"
-                            :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                            :style="linkStyle"
                         >
                             Sobre
                         </router-link>
@@ -58,11 +74,12 @@
                         <router-link 
                             to="/login" 
                             :class="[
-                                'font-semibold text-sm uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                'font-semibold uppercase transition-colors border-b-2 border-transparent hover:border-current pb-1',
+                                scrolledPast ? 'text-sm' : 'text-sm md:text-base',
                                 'text-white drop-shadow-2xl hover:text-white/80',
                                 $route.name === 'login' && 'border-white'
                             ]"
-                            :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                            :style="linkStyle"
                         >
                             Login
                         </router-link>
@@ -94,7 +111,7 @@
                             'font-semibold text-sm uppercase transition-colors',
                             'text-white drop-shadow-lg hover:text-white/80'
                         ]"
-                        :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                        :style="linkStyle"
                     >
                         Home
                     </router-link>
@@ -105,7 +122,7 @@
                             'font-semibold text-sm uppercase transition-colors',
                             'text-white drop-shadow-lg hover:text-white/80'
                         ]"
-                        :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                        :style="linkStyle"
                     >
                         Serviços
                     </router-link>
@@ -116,9 +133,9 @@
                             'font-semibold text-sm uppercase transition-colors',
                             'text-white drop-shadow-lg hover:text-white/80'
                         ]"
-                        :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                        :style="linkStyle"
                     >
-                            Sobre
+                        Sobre
                     </router-link>
                     <router-link 
                         to="/login" 
@@ -127,7 +144,7 @@
                             'font-semibold text-sm uppercase transition-colors',
                             'text-white drop-shadow-lg hover:text-white/80'
                         ]"
-                        :style="shouldShowWhiteBackground ? 'letter-spacing: 2px; padding: 0.2rem 1rem;' : 'letter-spacing: 2px; padding: 0.2rem 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'"
+                        :style="linkStyle"
                     >
                         Login
                     </router-link>
@@ -143,27 +160,69 @@ export default {
     data() {
         return {
             mobileMenuOpen: false,
-            isScrolled: false
+            scrolledPast: false,
+            scrolling: false,
+            scrollCheckInterval: null
         }
     },
     computed: {
-        shouldShowWhiteBackground() {
-            return this.isScrolled || this.$route.name !== 'home';
+        linkStyle() {
+            const baseStyle = 'letter-spacing: 2px; padding: 0.2rem 1rem;';
+            if (!this.scrolledPast) {
+                return baseStyle + ' text-shadow: 0 2px 4px rgba(0,0,0,0.5);';
+            }
+            return baseStyle;
         }
     },
     mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-        this.handleScroll();
+        // Inicializar estado baseado na posição atual
+        this.checkScrollPosition();
+        
+        // Marcar quando o usuário está scrollando
+        window.addEventListener('scroll', () => {
+            this.scrolling = true;
+        }, { passive: true });
+
+        // Verificar posição de scroll a cada 100ms (throttling)
+        this.scrollCheckInterval = setInterval(() => {
+            if (this.scrolling) {
+                this.scrolling = false;
+                this.checkScrollPosition();
+            }
+        }, 100);
     },
     beforeUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', () => {});
+        if (this.scrollCheckInterval) {
+            clearInterval(this.scrollCheckInterval);
+        }
     },
     methods: {
         toggleMobileMenu() {
             this.mobileMenuOpen = !this.mobileMenuOpen;
         },
-        handleScroll() {
-            this.isScrolled = window.scrollY > 50;
+        checkScrollPosition() {
+            const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Usuário scrollou mais de 100px do topo
+                if (!this.scrolledPast) {
+                    this.switchInto();
+                }
+            } else {
+                // Usuário voltou para o topo (<= 100px)
+                if (this.scrolledPast) {
+                    this.switchStart();
+                }
+            }
+        },
+        switchInto() {
+            // Transição para estado "into" (após scroll)
+            this.scrolledPast = true;
+        },
+        switchStart() {
+            // Transição para estado "start" (no topo)
+            this.scrolledPast = false;
         }
     },
     watch: {
@@ -174,3 +233,27 @@ export default {
 }
 </script>
 
+<style scoped>
+/* Estado Ghost (transparente) - Estado inicial */
+.navbar--color--ghost {
+    background-color: transparent !important;
+    backdrop-filter: none;
+}
+
+/* Estado Secondary (preto sólido) - Após scroll */
+.navbar--color--secondary {
+    background-color: #0b0b0b !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Tamanho XL (grande) - Estado inicial */
+.navbar--size--xl {
+    /* Altura controlada via classes Tailwind no template */
+}
+
+/* Tamanho MD (médio) - Após scroll */
+.navbar--size--md {
+    /* Altura controlada via classes Tailwind no template */
+}
+</style>
